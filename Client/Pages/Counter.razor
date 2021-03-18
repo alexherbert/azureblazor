@@ -17,6 +17,7 @@
 
     private void DecrementCount()
     {
-        currentCount--;
+        if (currentCount > 1)
+            currentCount--;
     }
 }
