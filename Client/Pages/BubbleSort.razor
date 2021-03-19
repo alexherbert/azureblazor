@@ -1,0 +1,67 @@
+@page "/bubblesort"
+
+<h1>Bubble Sort</h1>
+
+<div class="sorter">
+    <section class="bars container card">
+        @foreach (var item in numbers)
+        {
+            <div class="bar" style="@GetStyle(@item)">@item</div>
+        }
+    </section>
+</div>
+<style>
+    .bubblecontainer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        margin: 25px;
+        padding: 25px;
+    }
+
+    .container-small {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        margin: 5px;
+        padding: 15px;
+    }
+
+    .bar {
+        background: black;
+        margin: 2.5px;
+        width: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0px 5px 15px 0px #ddd;
+    }
+
+    .controls {
+        display: flex;
+    }
+</style>
+
+@code {
+    private int[] numbers;
+
+    public string GetStyle(int width)
+    {
+        return $"width: {width * 10}px; background-color: grey;";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            numbers = new[] { 1, 20, 5, 6, 10 };
+            await Task.FromResult(numbers);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+}
